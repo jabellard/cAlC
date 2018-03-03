@@ -1,0 +1,196 @@
+:root{
+--primary: #ddd;
+--dark: #333;
+--light: #fff;
+--danger: #c94c4c;
+--shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+--min-log-height: 30px;
+--background: #ccc;
+--child-padding: 10px;
+}
+
+html{
+
+}
+
+body{
+  box-sizing: border-box;
+  margin: 0px;
+  text-align: center;
+  color: var(--dark);
+  background-color: var(--background);
+}
+
+.wrapper{
+
+}
+
+.m-calc{
+  display: grid;
+}
+.calc{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin: auto;
+  box-shadow: var(--shadow);
+  min-width: 300px;
+}
+
+.btn{
+  border-radius: 10px;
+  background-color: var(--primary);
+  margin: 10px;
+  padding: 10px;
+  //text-decoration: none;
+}
+
+.btn:hover{
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.btn-danger{
+  background-color: var(--danger);
+  color: var(--light);
+  margin: 10px;
+}
+
+.log{
+  border-radius: 10px;
+  background-color: var(--primary);
+  margin: 10px;
+  padding: 10px;
+  min-height: var(--min-log-height);
+  text-align: left;
+}
+._stdout{
+  grid-row: 1;
+  grid-column: 1 / 5;
+}
+
+._del{
+  grid-row: 2;
+  grid-column: 1 / 2;
+}
+
+._clr{
+  grid-row: 2;
+  grid-column: 2 / 3;
+}
+
+._div{
+  grid-row: 2;
+  grid-column: 3 / 4;
+}
+
+._mod{
+  grid-row: 2;
+  grid-column: 4 / 5;
+}
+
+._7{
+  grid-row: 3;
+  grid-column: 1 / 2;
+}
+
+._8{
+  grid-row: 3;
+  grid-column: 2 / 3;
+}
+
+._9{
+  grid-row: 3;
+  grid-column: 3 / 4;
+}
+
+._mul{
+  grid-row: 3;
+  grid-column: 4 / 5;
+}
+
+._4{
+  grid-row: 4;
+  grid-column: 1 / 2;
+}
+
+._5{
+  grid-row: 4;
+  grid-column: 2 / 3;
+}
+
+._6{
+  grid-row: 4;
+  grid-column: 3 / 4;
+}
+
+._sub{
+  grid-row: 4;
+  grid-column: 4 / 5;
+}
+
+._1{
+  grid-row: 5;
+  grid-column: 1 / 2;
+}
+
+._2{
+  grid-row: 5;
+  grid-column: 2 / 3;
+}
+
+._3{
+  grid-row: 5;
+  grid-column: 3 / 4;
+}
+
+._add{
+  grid-row: 5;
+  grid-column: 4 / 5;
+}
+
+._0{
+  grid-row: 6;
+  grid-column: 1 / 2;
+}
+
+._dot{
+  grid-row: 6;
+  grid-column: 2 / 3;
+}
+
+._equal{
+  grid-row: 6;
+  grid-column: 3 / 5;
+}
+
+._stderr{
+  grid-row: 7;
+  grid-column: 1 / 5;
+}
+
+/*
+<a href="" id="_del" class=" _del btn btn-danger">DEL</a>
+<a href="" id="_clr" class="_clr btn btn-danger">CLR</a>
+<a href="" id="_div" class="_div btn">/</a>
+<a href="" id="_mod" class="_mod btn">*</a>
+
+<a href="" id="_7" class="_7 btn">7</a>
+<a href="" id="_8" class="_8 btn">8</a>
+<a href="" id="_9" class="_9 btn">9</a>
+<a href="" id="_mul" class="_mul btn">x</a>
+
+<a href="" id="_4" class="_4 btn">4</a>
+<a href="" id="_5" class="_5 btn">5</a>
+<a href="" id="_6" class="_6 btn">6</a>
+<a href="" id="_sub" class="_sub btn">-</a>
+
+<a href="" id="_1" class="_1 btn">1</a>
+<a href="" id="_2" class="_2 btn">2</a>
+<a href="" id="_3" class="_3 btn">3</a>
+<a href="" id="_add" class="_add btn">+</a>
+<a href="" id="_0" class="_0 btn">0</a>
+<a href="" id="_dot" class="_dot btn">.</a>
+<a href="" id="_equal" class="_equal btn">=</a>
+*/
