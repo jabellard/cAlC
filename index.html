@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>cAlC++</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="calc.js" type="text/javascript"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -18,31 +19,30 @@
 
     <div id="_stdout" class="_stdout log">outtt</div>
 
-    <div id="_del" class=" _del btn btn-danger">DEL</div>
-    <div id="_clr" class="_clr btn btn-danger">CLR</div>
-    <div id="_div" class="_div btn">/</div>
-    <div id="_mod" class="_mod btn">*</div>
+    <a href="" id="_del" class=" _del btn btn-danger">DEL</a>
+    <a href="" id="_clr" class="_clr btn btn-danger">CLR</a>
+    <a href="" id="_div" class="_div btn">/</a>
+    <a href="" id="_mod" class="_mod btn">*</a>
 
-    <div id="_7" class="_7 btn">7</div>
-    <div id="_8" class="_8 btn">8</div>
-    <div id="_9" class="_9 btn">9</div>
-    <div id="_mul" class="_mul btn">x</div>
+    <a href="" id="_7" class="_7 btn">7</a>
+    <a href="" id="_8" class="_8 btn">8</a>
+    <a href="" id="_9" class="_9 btn">9</a>
+    <a href="" id="_mul" class="_mul btn">x</a>
 
-    <div id="_4" class="_4 btn">4</div>
-    <div id="_5" class="_5 btn">5</div>
-    <div id="_6" class="_6 btn">6</div>
-    <div id="_sub" class="_sub btn">-</div>
+    <a href="" id="_4" class="_4 btn">4</a>
+    <a href="" id="_5" class="_5 btn">5</a>
+    <a href="" id="_6" class="_6 btn">6</a>
+    <a href="" id="_sub" class="_sub btn">-</a>
 
-    <div id="_1" class="_1 btn">1</div>
-    <div id="_2" class="_2 btn">2</div>
-    <div id="_3" class="_3 btn">3</div>
-    <div id="_add" class="_add btn">+</div>
+    <a href="" id="_1" class="_1 btn">1</a>
+    <a href="" id="_2" class="_2 btn">2</a>
+    <a href="" id="_3" class="_3 btn">3</a>
+    <a href="" id="_add" class="_add btn">+</a>
+    <a href="" id="_0" class="_0 btn">0</a>
+    <a href="" id="_dot" class="_dot btn">.</a>
+    <a href="" id="_equal" class="_equal btn">=</a>
 
-    <div id="_0" class="_0 btn">0</div>
-    <div id="_dot" class="_dot btn">.</div>
-    <div id="_equal" class="_equal btn">=</div>
-
-    <div id="_stderr" class="_stderr log">errr</div>
+    <div id="_stderr" class="_stderr log">s vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum debitis saepe iusto facere id similique aliquam odio ducimus, natus quae?</div>
     </div>
     </main>
 
@@ -51,4 +51,183 @@
     </footer>
   </div>
 </body>
+
+<script type="text/javascript">
+  let operators = ["+", "-", "/", "*", "%"];
+  operators.contains = function(char){
+    for (let i = 0; i < this.lenght; i++){
+      if (this[i] === char){
+        return true;
+      }
+    }
+    return false;
+  };
+  let user-input = "";
+  let calc-btns = getElementsByClassName(btn);
+  let input-max-chars = 10;
+  let states = ["INPUT", "INFO", "WARN", "RES"];
+  let current-state = states[0];
+
+  function info-state(input-char){
+    if (input-char === "=") {
+
+    }
+    else if (input-char === "DEL") {
+
+    }
+    else if (input-char === "CLR") {
+
+    }
+    else if (operators.contains(input-char)) {
+
+    }
+    else () {
+
+    }
+
+  }
+  function 99arn-state(input-char){
+    if (input-char == "=") {
+
+    }
+    else if (input-char == "DEL") {
+
+    }
+    else if (input-char == "CLR") {
+
+    }
+    else if (operators.contains(input-char)) {
+
+    }
+    else () {
+
+    }
+
+  }
+
+  function res-state(input-char){
+    if (input-char == "=") {
+
+    }
+    else if (input-char == "DEL") {
+
+    }
+    else if (input-char == "CLR") {
+
+    }
+    else if (operators.contains(input-char)) {
+
+    }
+    else () {
+
+    }
+
+  }
+
+  function info-state(input-char){
+    if (input-char == "=") {
+
+    }
+    else if (input-char == "DEL") {
+
+    }
+    else if (input-char == "CLR") {
+
+    }
+    else if (operators.contains(input-char)) {
+
+    }
+    else () {
+
+    }
+
+  }
+
+  function input-state(input-char){
+    if (user-input === "="){
+      if (user-input.lenght == 0){
+        shake-input-box();
+        display-info("");
+      }
+      else if (operators.contains(user-input[user-input.lenght - 1]) {
+        shake-input-box();
+        display-info("");
+      }
+      else{
+        // evaluate expression;
+        // update output
+        // display output
+      }
+    }
+    else if (operators.contains(input-char)) {
+        if (user-input.lenght == 0){
+          shake-input-box();
+          display-info("");
+        }
+        else if (operators.contains(user-input[user-input.lenght - 1])) {
+          shake-input-box();
+          display-info("");
+        }
+        else {
+          user-input.push(input-char);
+          update-input-box();
+          if (user-input.lenght == input-max-chars){
+            display-99arming();
+          }
+        }
+    }
+    else {
+        user-input.push(input-char);
+        update-input-box();
+        if (user-input.lenght == input-max-chars){
+          display-99arming();
+        }
+
+    }
+      if (true) {
+
+      }
+    }
+
+  }
+  function read-input()
+  {
+    switch (current-state) {
+      case states[0]:
+        input-state();
+        break;
+      case states[1]:
+        info-state();
+        break;
+      case states[2]:
+        warn-state();
+        break;
+      case states[3]:
+        res-state();
+          break;
+
+      default:
+        break;
+    }
+    if (user-input.lenght == (input-max-chars - 1)){
+
+    }
+    if (user-input.lenght == input-max-chars){
+      shake-input-box();
+      display
+    }
+    switch (this.HTML) {
+
+      case expression:
+
+        break;
+      default:
+
+    }
+  }
+  for (let i = 0; i < calc-btns.lenght; i++)
+  {
+    calc-btns[i].addEventListener("click", read-input());
+  }
+</script>
 </html>

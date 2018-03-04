@@ -27,6 +27,7 @@ body{
 
 .m-calc{
   display: grid;
+  margin: 10px;
 }
 .calc{
   display:grid;
@@ -34,6 +35,7 @@ body{
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   margin: auto;
+  border-radius: 10px;
   box-shadow: var(--shadow);
   min-width: 300px;
 }
@@ -43,7 +45,7 @@ body{
   background-color: var(--primary);
   margin: 10px;
   padding: 10px;
-  //text-decoration: none;
+  text-decoration: none;
 }
 
 .btn:hover{
@@ -58,11 +60,14 @@ body{
 }
 
 .log{
+  display: grid;
   border-radius: 10px;
   background-color: var(--primary);
   margin: 10px;
   padding: 10px;
   min-height: var(--min-log-height);
+  //max-width: 100%;
+  //word-wrap: break-word;
   text-align: left;
 }
 ._stdout{
@@ -193,4 +198,28 @@ body{
 <a href="" id="_0" class="_0 btn">0</a>
 <a href="" id="_dot" class="_dot btn">.</a>
 <a href="" id="_equal" class="_equal btn">=</a>
+
+<div id="_del" class=" _del btn btn-danger">DEL</div>
+<div id="_clr" class="_clr btn btn-danger">CLR</div>
+<div id="_div" class="_div btn">/</div>
+<div id="_mod" class="_mod btn">*</div>
+
+<div id="_7" class="_7 btn">7</div>
+<div id="_8" class="_8 btn">8</div>
+<div id="_9" class="_9 btn">9</div>
+<div id="_mul" class="_mul btn">x</div>
+
+<div id="_4" class="_4 btn">4</div>
+<div id="_5" class="_5 btn">5</div>
+<div id="_6" class="_6 btn">6</div>
+<div id="_sub" class="_sub btn">-</div>
+
+<div id="_1" class="_1 btn">1</div>
+<div id="_2" class="_2 btn">2</div>
+<div id="_3" class="_3 btn">3</div>
+<div id="_add" class="_add btn">+</div>
+
+<div id="_0" class="_0 btn">0</div>
+<div id="_dot" class="_dot btn">.</div>
+<div id="_equal" class="_equal btn">=</div>
 */
