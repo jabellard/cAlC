@@ -49,11 +49,20 @@
       </div>
       <section class="doc">
         <h1>Documentation</h1>
+          <p class="doc-text">
+            cAlC++ is a natural number infix calculator. The bottom-most
+         section of the calculator (STDLOG  -- standard log)
+            deserves explanation. Therein, the current state of the calculator
+            is logged. There are two states: (1) INPUT, and (2) RES.
+            In state INPUT, the calulator awaits more input, and the eventual
+            command to evaulate an expression. In state RES, the result of an
+            evaluated expression is announced therein (e.g., The expression
+            evaluated to 15).
+          </p>
       </section>
     </main>
 
     <footer class="footer">
-      <div class="p">blajjh</div>
     </footer>
   </div>
 </body>
@@ -211,66 +220,44 @@ $(document).ready(function(){
       res_state(this.text());
     } // end else
   } // end function read_input()
-/*
-  function res-state(input-char){
-    if (input-char === "=") {
+
+  function res_state(input_char){
+    if (input_char === "=") {
       ; // Do nothing
     } // end if
-    else if (input-char === "DEL") {
+    else if (input_char === "DEL") {
+      // Remove the last character of stdout
+      stdout.pop();
+      $("._stdout").text(stdout);
+
       // Change internal state to INPUT
+      transition_state(states[1]);
     } // end else if
-    else if (input-char === "CLR") {
-      // Change internal state to INPUT
+    else if (input_char === "CLR") {
       // Clear stdout
-    } // end else if
-    else if (operators.contains(input-char)) {
+      stdout = "";
+      $("._stdout").text(stdout);
+
       // Change internal state to INPUT
+      transition_state(states[1]);
+    } // end else if
+    else if (operators.contains(input_char)) {
       // Append the operator to stdout
+      stdout.push(input_char);
+      $("._stdout").text(stdout);
+
+      // Change internal state to INPUT
+      transition_state(states[1]);
     } // end else if
     else {
-      // Change internal state to INPUT
       // Clear stdout
+      stdout = "";
+      $("._stdout").text(stdout);
+
+      // Change internal state to INPUT
+      transition_state(states[1]);
     } // end else
   } // end function res-state()
-
-
-  function state(input-char){
-    if (input-char === "=") {
-      if (operators.contains(stdout[stdout.lenght - 1])) {
-        // Leave internal states as is
-        // --------------------SPECIAL EFFECTS
-        // Shake cliked button or output box
-        // Disable buttons
-        // Display flashing dismissable button in the log box
-      } // end if
-      else {
-        // Evaluate the expression and output the result
-        // Change internal state to RES and log RES message
-      } // end else
-    } // end if
-    else if (input-char === "DEL") {
-
-    } // end else if
-    else if (input-char === "CLR") {
-
-    } // end else if
-    else if (operators.contains(input-char)) {
-
-    } // end else if
-    else {
-
-    } // end else
-  } // end function state()
-
-  function op-DEL(){
-
-  } // end function op-DEL()
-
-  function op-CLR(){
-
-  } // end function op-CLR()
-
-*/
 
   $("a.btn").click(read_input);
 });

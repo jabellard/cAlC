@@ -180,6 +180,10 @@ body{
   grid-column: 1 / 5;
 }
 
+.doc-text{
+  margin: auto;
+  max-width: 500px;
+}
 /*
 <a href="" id="_del" class=" _del btn btn-danger">DEL</a>
 <a href="" id="_clr" class="_clr btn btn-danger">CLR</a>
