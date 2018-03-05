@@ -45,7 +45,7 @@
         <a href="" id="_0" class="_0 btn">0</a>
         <a href="" id="_equal" class="_equal btn">=</a>
 
-        <div id="_stderr" class="_stderr log">s vitae! Lorem iquae?</div>
+        <div id="_stdlog" class="_stdlog log">s  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse, officia cumque placeat aspernatur consectetur blanditiis commodi, eius quod nisi, dolorem libero expedita suscipit optio. Magnam est delectus numquam! Fugit? vitae! Lorem iquae?</div>
       </div>
       <section class="doc">
         <h1>Documentation</h1>
@@ -90,14 +90,14 @@ $(document).ready(function(){
   function transition_state(state, log_msg){
     if (state === states[0]) { // current state = INPUT
       // Display RES log message
-      $("._stderr").text(log_res_msg + log_msg);
+      $("._stdlog").text(log_res_msg + log_msg);
 
       // Change state to RES
       current_state = states[1];
     } // end if
     else {
       // Display INPUT log message
-      $("._stderr").text(log_input_msg);
+      $("._stdlog").text(log_input_msg);
 
       // change state to INPUT
       current_state = states[0];

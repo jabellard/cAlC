@@ -175,9 +175,10 @@ body{
   grid-column: 3 / 5;
 }
 
-._stderr{
+._stdlog{
   grid-row: 7;
   grid-column: 1 / 5;
+  max-width: 300px;
 }
 
 .doc-text{
