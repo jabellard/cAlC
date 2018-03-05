@@ -8,7 +8,13 @@ oprators.contains = function(ch){
   } // end for
 } // end contains()
 
+var test = function test(){
+  alert("test 1");
+}
 let stdout = "";
+let log-input-msg = "Awaiting eval command..."
+let log-res-msg = "";
+let expression = "";
 let stdout-capacity = 10;
 let states = ["INPUT", "RES"];
 let current-state = states[0];
@@ -27,6 +33,15 @@ function read-input(){
     res-state();
   } // end else
 }
+
+function transition-state(state, log-msg){
+  if (state === "INPUT") {
+    // Display INPUT log message
+  } // end if
+  else {
+    // Display eval result
+  } // end else
+} // end function transition-state()
 
 function state(input-char){
   if (input-char === "=") {

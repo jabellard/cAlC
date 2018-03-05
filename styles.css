@@ -73,6 +73,7 @@ body{
 ._stdout{
   grid-row: 1;
   grid-column: 1 / 5;
+  font-size: 1.5em;
 }
 
 ._del{
@@ -157,14 +158,18 @@ body{
 
 ._0{
   grid-row: 6;
-  grid-column: 1 / 2;
-}
-
-._dot{
-  grid-row: 6;
   grid-column: 2 / 3;
 }
 
+._null{
+  grid-row: 6;
+  grid-column: 1 / 2;
+}
+
+._null:hover{
+  background-color: var(--primary);
+  color: var(--light);
+}
 ._equal{
   grid-row: 6;
   grid-column: 3 / 5;

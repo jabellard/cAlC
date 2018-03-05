@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>cAlC++</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="calc.js" type="text/javascript"></script>
 </head>
+
 <body>
   <div class="wrapper">
     <header class="main-header">
-      <div class="h1">cAlC++</div>
+      <h1>cAlC++</h1>
     </header>
 
     <main class="m-calc">
-    <div class="calc">
+      <div class="calc">
 
-    <div id="_stdout" class="_stdout log">outtt</div>
+        <div id="_stdout" class="_stdout log">outtt</div>
 
-    <a href="" id="_del" class=" _del btn btn-danger">DEL</a>
-    <a href="" id="_clr" class="_clr btn btn-danger">CLR</a>
-    <a href="" id="_div" class="_div btn">/</a>
-    <a href="" id="_mod" class="_mod btn">*</a>
+        <a href="" id="_del" class=" _del btn btn-danger">DEL</a>
+        <a href="" id="_clr" class="_clr btn btn-danger">CLR</a>
+        <a href="" id="_div" class="_div btn">/</a>
+        <a href="" id="_mod" class="_mod btn">%</a>
 
-    <a href="" id="_7" class="_7 btn">7</a>
-    <a href="" id="_8" class="_8 btn">8</a>
-    <a href="" id="_9" class="_9 btn">9</a>
-    <a href="" id="_mul" class="_mul btn">x</a>
+        <a href="" id="_7" class="_7 btn">7</a>
+        <a href="" id="_8" class="_8 btn">8</a>
+        <a href="" id="_9" class="_9 btn">9</a>
+        <a href="" id="_mul" class="_mul btn">x</a>
 
-    <a href="" id="_4" class="_4 btn">4</a>
-    <a href="" id="_5" class="_5 btn">5</a>
-    <a href="" id="_6" class="_6 btn">6</a>
-    <a href="" id="_sub" class="_sub btn">-</a>
+        <a href="" id="_4" class="_4 btn">4</a>
+        <a href="" id="_5" class="_5 btn">5</a>
+        <a href="" id="_6" class="_6 btn">6</a>
+        <a href="" id="_sub" class="_sub btn">-</a>
 
-    <a href="" id="_1" class="_1 btn">1</a>
-    <a href="" id="_2" class="_2 btn">2</a>
-    <a href="" id="_3" class="_3 btn">3</a>
-    <a href="" id="_add" class="_add btn">+</a>
-    <a href="" id="_0" class="_0 btn">0</a>
-    <a href="" id="_dot" class="_dot btn">.</a>
-    <a href="" id="_equal" class="_equal btn">=</a>
+        <a href="" id="_1" class="_1 btn">1</a>
+        <a href="" id="_2" class="_2 btn">2</a>
+        <a href="" id="_3" class="_3 btn">3</a>
+        <a href="" id="_add" class="_add btn">+</a>
+        <div id="_null" class="_null btn"></div>
+        <a href="" id="_0" class="_0 btn">0</a>
+        <a href="" id="_equal" class="_equal btn">=</a>
 
-    <div id="_stderr" class="_stderr log">s vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum debitis saepe iusto facere id similique aliquam odio ducimus, natus quae?</div>
-    </div>
+        <div id="_stderr" class="_stderr log">s vitae! Lorem iquae?</div>
+      </div>
+      <section class="doc">
+        <h1>Documentation</h1>
+      </section>
     </main>
 
     <footer class="footer">
@@ -53,181 +59,221 @@
 </body>
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+//alert("ready");
+  let stdout = "";
+  let log_input_msg = "Awaiting command...";
+  let log_res_msg = "Expression evaluated to ";
+  let stdout_capacity = 10;
+  let states = ["INPUT", "RES"];
+  let current_state = states[0];
   let operators = ["+", "-", "/", "*", "%"];
-  operators.contains = function(char){
-    for (let i = 0; i < this.lenght; i++){
-      if (this[i] === char){
+  oprators.contains = function(ch){
+    for (let i = 0; i < this.length; i++) {
+      if (this[i] === ch) {
         return true;
-      }
-    }
+      } // end if
+    } // end for
     return false;
-  };
-  let user-input = "";
-  let calc-btns = getElementsByClassName(btn);
-  let input-max-chars = 10;
-  let states = ["INPUT", "INFO", "WARN", "RES"];
-  let current-state = states[0];
+  } // end contains()
 
-  function info-state(input-char){
+  function transition_state(state, log_msg){
+    if (state === states[0]) { // current state = INPUT
+      // Display RES log message
+      $("._stderr").text(log_res_msg + log_msg);
+
+      // Change state to RES
+      current_state = states[1];
+    } // end if
+    else {
+      // Display INPUT log message
+      $("._stderr").text(log_input_msg);
+
+      // change state to INPUT
+      current_state = states[0];
+    } // end else
+  } // end function transition_state()
+
+  function input_state(input_char){
+    if (input_char === "=") {
+      if (operators.contains(stdout[stdout.lenght - 1])) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("empty box");
+      } // end if
+      else {
+        // Evaluate the expression and output the result
+        let result = eval(stdout);
+        stdout = result;
+        $("._stdout").text(stdout);
+
+        // Change internal state to RES and log RES message
+        transition_state(states[0], stdout);
+      } // end else
+    } // end if
+    else if (input_char === "DEL") {
+      if (stdout.lenght === 0) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("empty box");;
+      } // end if
+      else {
+        // Leave internal state as is
+        // Remove the last character in stdout
+        stdout.pop();
+        $("._stdout").text(stdout);
+      } // end else
+    } // end else if
+    else if (input_char === "CLR") {
+      if (stdout.lenght === 0) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("empty box");;
+      } // end if
+      else {
+        // Leave internal state as is
+        // Remove all characters in stdout
+        stdout = "";
+        $("._stdout").text(stdout);
+      } // end else
+    } // end else if
+    else if (operators.contains(input_char)) {
+      if (stdout.lenght == 0) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("first char");
+      } // end if
+      else if (operators.contains(stdout[stdout.lenght - 1])) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("bad op sequence");
+      } // end else if
+      else if (stdout.lenght < stdout_capacity) {
+        // Leave internal states as is
+        // Add input char to stdout
+        stdout.push(input_char);
+        $("._stdout").text(stdout);
+      } // end else if
+      else {
+        // Max stdout capacity has already been reached
+
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("max chars reached");
+      } // end else
+    } // end else if
+    // A digit is clicked
+    else {
+      if (stdout.lenght < stdout-capacity) {
+        // Leave internal states as is
+        // Add input char to stdout
+        stdout.push(input_char);
+        $("._stdout").text(stdout);
+      } // end if
+      else {
+        // Max stdout capacity has already been reached
+
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+        alert("max chars reached");
+      } // end else
+    } // end else
+  } // end function input_state()
+
+  function read_input(){
+    alert("clicked!");
+    if (current_state === states[0]) {
+    input_state(this.text());
+    } // end if
+    else {
+      res_state(this.text());
+    } // end else
+  } // end function read_input()
+/*
+  function res-state(input-char){
     if (input-char === "=") {
+      ; // Do nothing
+    } // end if
+    else if (input-char === "DEL") {
+      // Change internal state to INPUT
+    } // end else if
+    else if (input-char === "CLR") {
+      // Change internal state to INPUT
+      // Clear stdout
+    } // end else if
+    else if (operators.contains(input-char)) {
+      // Change internal state to INPUT
+      // Append the operator to stdout
+    } // end else if
+    else {
+      // Change internal state to INPUT
+      // Clear stdout
+    } // end else
+  } // end function res-state()
 
-    }
+
+  function state(input-char){
+    if (input-char === "=") {
+      if (operators.contains(stdout[stdout.lenght - 1])) {
+        // Leave internal states as is
+        // --------------------SPECIAL EFFECTS
+        // Shake cliked button or output box
+        // Disable buttons
+        // Display flashing dismissable button in the log box
+      } // end if
+      else {
+        // Evaluate the expression and output the result
+        // Change internal state to RES and log RES message
+      } // end else
+    } // end if
     else if (input-char === "DEL") {
 
-    }
+    } // end else if
     else if (input-char === "CLR") {
 
-    }
+    } // end else if
     else if (operators.contains(input-char)) {
 
-    }
-    else () {
-
-    }
-
-  }
-  function 99arn-state(input-char){
-    if (input-char == "=") {
-
-    }
-    else if (input-char == "DEL") {
-
-    }
-    else if (input-char == "CLR") {
-
-    }
-    else if (operators.contains(input-char)) {
-
-    }
-    else () {
-
-    }
-
-  }
-
-  function res-state(input-char){
-    if (input-char == "=") {
-
-    }
-    else if (input-char == "DEL") {
-
-    }
-    else if (input-char == "CLR") {
-
-    }
-    else if (operators.contains(input-char)) {
-
-    }
-    else () {
-
-    }
-
-  }
-
-  function info-state(input-char){
-    if (input-char == "=") {
-
-    }
-    else if (input-char == "DEL") {
-
-    }
-    else if (input-char == "CLR") {
-
-    }
-    else if (operators.contains(input-char)) {
-
-    }
-    else () {
-
-    }
-
-  }
-
-  function input-state(input-char){
-    if (user-input === "="){
-      if (user-input.lenght == 0){
-        shake-input-box();
-        display-info("");
-      }
-      else if (operators.contains(user-input[user-input.lenght - 1]) {
-        shake-input-box();
-        display-info("");
-      }
-      else{
-        // evaluate expression;
-        // update output
-        // display output
-      }
-    }
-    else if (operators.contains(input-char)) {
-        if (user-input.lenght == 0){
-          shake-input-box();
-          display-info("");
-        }
-        else if (operators.contains(user-input[user-input.lenght - 1])) {
-          shake-input-box();
-          display-info("");
-        }
-        else {
-          user-input.push(input-char);
-          update-input-box();
-          if (user-input.lenght == input-max-chars){
-            display-99arming();
-          }
-        }
-    }
+    } // end else if
     else {
-        user-input.push(input-char);
-        update-input-box();
-        if (user-input.lenght == input-max-chars){
-          display-99arming();
-        }
 
-    }
-      if (true) {
+    } // end else
+  } // end function state()
 
-      }
-    }
+  function op-DEL(){
 
-  }
-  function read-input()
-  {
-    switch (current-state) {
-      case states[0]:
-        input-state();
-        break;
-      case states[1]:
-        info-state();
-        break;
-      case states[2]:
-        warn-state();
-        break;
-      case states[3]:
-        res-state();
-          break;
+  } // end function op-DEL()
 
-      default:
-        break;
-    }
-    if (user-input.lenght == (input-max-chars - 1)){
+  function op-CLR(){
 
-    }
-    if (user-input.lenght == input-max-chars){
-      shake-input-box();
-      display
-    }
-    switch (this.HTML) {
+  } // end function op-CLR()
 
-      case expression:
+*/
 
-        break;
-      default:
-
-    }
-  }
-  for (let i = 0; i < calc-btns.lenght; i++)
-  {
-    calc-btns[i].addEventListener("click", read-input());
-  }
+  $("a.btn").click(read_input);
+});
 </script>
+
 </html>
